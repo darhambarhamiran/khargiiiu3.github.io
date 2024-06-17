@@ -1,48 +1,356 @@
+
 <!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <title>نوت پد ساده</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شماره تماس‌های ضروری روستای بستقلات</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            direction: rtl; /* راست به چپ برای متن فارسی */
             text-align: center;
-            padding: 50px;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Old_bastekalat.jpg/1600px-Old_bastekalat.jpg'); /* آدرس عکس را اینجا قرار دهید */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        textarea {
-            width: 80%;
-            height: 150px;
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8); /* تنظیم شفافیت پس‌زمینه */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 80vh;
         }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
         button {
             margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #ff5722;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .page button {
+            background-color: #4caf50;
+        }
+
+        .page button:hover {
+            background-color: #388e3c;
         }
     </style>
 </head>
 <body>
-    <h1>نوت پد ساده</h1>
-    <textarea id="noteContent"></textarea><br>
-    <button onclick="saveNote()">ذخیره یادداشت</button>
+    <div id="main-page" class="overlay">
+        <h1>شماره تماس‌های ضروری روستای بستقلات</h1>
+        <ul>
+           
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/2.18.0/parse.min.js"></script>
+            
+        </ul>
+        <button onclick="window.location.href='https://t.me/kabol6776';">به منظور ارائه پیشنهاد برای اضافه کردن شماره‌های دیگر و یا انتقاد، لطفاً اینجا ضربه بزنید </button>
+        <button onclick="showPage('supermarket')">سوپر مارکت</button>
+        <button onclick="showPage('builder')">استاد بنا</button>
+        <button onclick="showPage('tractor')">تراکتوردار</button>
+        <button onclick="showPage('bakery')">نانوایی‌</button>
+        <button onclick="showPage('fruits')">میوه و سبزی‌</button>
+        <button onclick="showPage('sandwich')">ساندویچی-کبابی-کافه</button>
+        <button onclick="showPage('barber')">آرایشگاه</button>
+        <button onclick="showPage('taxi')">تاکسی تلفنی</button>
+        <button onclick="showPage('clothes')">لباس فروشی</button>
+        <button onclick="showPage('crane')">جرثقیل</button>
+        <button onclick="showPage('fodder')">علوفه دام و کاه</button>
+        <button onclick="showPage('plastic')">پلاستیک فروشی</button>
+        <button onclick="showPage('motor')">تعمیرگاه موتور</button>
+        <button onclick="showPage('welding')">جوشکاری</button>
+        <button onclick="showPage('electric')">الکتریکی</button>
+        <button onclick="showPage('block')">بلوک زنی</button>
+        <button onclick="showPage('tailor')">خیاطی</button>
+        <button onclick="showPage('plumbing')">لوله و برق کشی</button>
+        <button onclick="showPage('burial')">کفن و دفن میت</button>
+        <button onclick="showPage('water')">مسئول آب</button>
+        <button onclick="showPage('council')">شورا</button>
+        <button onclick="showPage('dehyari')">دهیاری</button>
+        <button onclick="showPage('dehyar')">دهیار</button>
+        <button onclick="showPage('imam')">امام جمعه</button>
+        <button onclick="showPage('highschool_boys')">دبیرستان پسرانه</button>
+        <button onclick="showPage('highschool_girls')">راهنمایی دخترانه</button>
+        <button onclick="showPage('elementary')">دبستان جهاد</button>
+        <button onclick="showPage('telecom')">مخابرات</button>
+        <button onclick="showPage('health')">شبکه بهداشت</button>
+        <button onclick="showPage('school')">مکتب خانه</button>
+        <button onclick="showPage('painting')">رنگ و نقاشی</button>
+    </div>
+
+    <div id="fire-page" class="overlay hidden page">
+        <h1>آتش‌نشانی</h1>
+        <p>شماره تماس: ۱۲۵</p>
+        <button onclick="showMainPage()">بازگشت</button>
+    </div>
+
+    <!-- صفحات اضافی -->
+    <div id="supermarket-page" class="overlay hidden page">
+    <h1>سوپر مارکت</h1>
+    <p>محمد شریف یعقوبی: <a href="tel:+987644383308">+987644383308</a></p>
+    <p>عبدالقادر قلاتی: <a href="tel:+987644383381">+987644383381</a></p>
+    <p>رستم عبدالهی: <a href="tel:+987644383507">+987644383507</a></p>
+    <p>عبدالخالق شجاع: <a href="tel:+987644383557">+987644383557</a></p>
+    <p>علی قلاتی: <a href="tel:+987644383338">+987644383338</a></p>
+    <p>اسماعیل فربودی: <a href="tel:+987644383585">+987644383585</a></p>
+    <p>محمد رحیمی: <a href="tel:+987644383601">+987644383601</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="builder-page" class="overlay hidden page">
+    <h1>استاد بنا</h1>
+    <p>احمد اقتدار: <a href="tel:+989179481402">+989179481402</a></p>
+    <p>عبدالرحیم اقتدار: <a href="tel:+989398542837">+989398542837</a></p>
+    <p>عبدالرحیم حاجی محمدی: <a href="tel:+989179621389">+989179621389</a></p>
+    <p>جاسم فولادی: <a href="tel:+989309795829">+989309795829</a></p>
+    <p>عبدالمجید شجاعی: <a href="tel:+989179470234">+989179470234</a></p>
+    <p>حسن قادری(فلکناز): <a href="tel:+989179482532">+989179482532</a></p>
+    <p>سیف الله محمدی: <a href="tel:+989173626200">+989173626200</a></p>
+    <p>احمد فولادی: <a href="tel:+989179955907">+989179955907</a></p>
+    <p>صدیق فولادی: <a href="tel:+989395647078">+989395647078</a></p>
+    <p>ماشاءالله محمودی: <a href="tel:+989179620940">+989179620940</a></p>
+    <p>ناصر صد تومانی: <a href="tel:+989336399459">+989336399459</a></p>
+    <p>حسین احمدی: <a href="tel:+989177643214">+989177643214</a></p>
+    <p>عبدالله فربودی: <a href="tel:+989385533974">+989385533974</a></p>
+    <p>نگهدار عبدالهی: <a href="tel:+989179621747">+989179621747</a></p>
+    <p>احمد حاجی محمدی: <a href="tel:+989391894699">+989391894699</a></p>
+    <p>عبدالله یعقوبی(ثابت): <a href="tel:+987644383325">+987644383325</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="tractor-page" class="overlay hidden page">
+    <h1>تراکتوردار</h1>
+    <p>علی اقتدار: <a href="tel:+989171992181">+989171992181</a></p>
+    <p>عبدالله اسماعیلی: <a href="tel:+989179073058">+989179073058</a></p>
+    <p>محمود مروت: <a href="tel:+989171981610">+989171981610</a></p>
+    <p>عبدالقادر قلاتی: <a href="tel:+989177625749">+989177625749</a></p>
+    <p>نگهدار عبدالهی: <a href="tel:+989179621747">+989179621747</a></p>
+    <p>عبدالقادر یعقوبی: <a href="tel:+989019537840">+989019537840</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+
+    <div id="bakery-page" class="overlay hidden page">
+    <h1>نانوایی‌</h1>
+    <p>حبیب احمدی: <a href="tel:+989361594018">+989361594018</a></p>
+    <p>حسن احمدی: <a href="tel:+989171992494">+989171992494</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="fruits-page" class="overlay hidden page">
+    <h1>میوه و سبزی‌</h1>
+    <p>عبدالواحد فرسودی: <a href="tel:+989177627269">+989177627269</a></p>
+    <p>محمد رحیمی: <a href="tel:+987644383601">+987644383601</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="sandwich-page" class="overlay hidden page">
+    <h1>ساندویچی</h1>
+    <p>ابراهیم محمدی: <a href="tel:+987644383291">+987644383291</a></p>
+    <p>منوچهر مروت: [شماره تماس]</p>
+    <p>حسن عبدالهی: <a href="tel:+989332501442">+989332501442</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="barber-page" class="overlay hidden page">
+    <h1>آرایشگاه</h1>
+    <p>اسماعیل خان: <a href="tel:+989360495720">+989360495720</a></p>
+    <p>مسلم فولادی: <a href="tel:+989176923002">+989176923002</a></p>
+    <p>مرتضی عبدالهی: <a href="tel:+989370979992">+989370979992</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="taxi-page" class="overlay hidden page">
+    <h1>تاکسی تلفنی</h1>
+    <p>صابر صد تومانی: <a href="tel:+989179471620">+989179471620</a></p>
+    <p>محمود قلاتی(علی): <a href="tel:+989173640289">+989173640289</a></p>
+    <p>ماشاءالله لیوحی: <a href="tel:+989179620851">+989179620851</a></p>
+    <p>محمد رحیمی: <a href="tel:+989379904465">+989379904465</a></p>
+    <p>عبدالله فربودی: <a href="tel:+989385533974">+989385533974</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="clothes-page" class="overlay hidden page">
+    <h1>لباس فروشی</h1>
+    <p>جمشید حاجی محمدی: <a href="tel:+987644383558">+987644383558</a></p>
+    <p>عبدالقادر محمودی: <a href="tel:+987644383487">+987644383487</a></p>
+    <p>عبدالله فربودی: <a href="tel:+987644383295">+987644383295</a></p>
+    <p>ناصر احمدی: <a href="tel:+987644383479">+987644383479</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="crane-page" class="overlay hidden page">
+    <h1>جرثقیل</h1>
+    <p>حسن حاجی محمدی: <a href="tel:+989173641288">+989173641288</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="fodder-page" class="overlay hidden page">
+    <h1>علوفه دام و کاه</h1>
+    <p>علی اقتدار: <a href="tel:+989171992181">+989171992181</a></p>
+    <p>ماشاءالله فرسودی: <a href="tel:+989179620996">+989179620996</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="plastic-page" class="overlay hidden page">
+    <h1>پلاستیک فروشی</h1>
+    <p>ماشاءالله فرسودی: <a href="tel:+987644383224">+987644383224</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="motor-page" class="overlay hidden page">
+    <h1>تعمیرگاه موتور</h1>
+    <p>مختار یعقوبی: <a href="tel:+989179648683">+989179648683</a></p>
+    <p>صدیق بستقلاتی: <a href="tel:+989175095162">+989175095162</a></p>
+    <p>ایوب یعقوبی: <a href="tel:+989381837202">+989381837202</a></p>
+    <p>حسین کهنسال: [شماره تماس تعمیرگاه موتور]</p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="welding-page" class="overlay hidden page">
+    <h1>جوشکاری</h1>
+    <p>ناصر یوسفی: <a href="tel:+989306243280">+989306243280</a></p>
+    <p>عبدالله عبدالهی: <a href="tel:+989179481284">+989179481284</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="electric-page" class="overlay hidden page">
+    <h1>الکتریکی</h1>
+    <p>ماشاءالله محمودی: <a href="tel:+987644383213">+987644383213</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="block-page" class="overlay hidden page">
+    <h1>بلوک زنی</h1>
+    <p>محمد رسول حاجی محمدی: <a href="tel:+989175034330">+989175034330</a></p>
+    <p>عبدالطیف حاجی محمدی: <a href="tel:+989171992238">+989171992238</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="tailor-page" class="overlay hidden page">
+    <h1>خیاطی</h1>
+    <p>خانم حاجی محمدی: <a href="tel:+987644383343">+987644383343</a></p>
+    <p>خانم حاجی محمدی: <a href="tel:+987644383578">+987644383578</a></p>
+    <p>خانم شجاعی: <a href="tel:+987644383213">+987644383213</a></p>
+    <p>خانم بست قلاتی: <a href="tel:+987644383377">+987644383377</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="plumbing-page" class="overlay hidden page">
+    <h1>لوله و برق کشی</h1>
+    <p>منصور کهنسال: <a href="tel:+989011642813">+989011642813</a></p>
+    <p>ناصر یوسفی: <a href="tel:+989306243280">+989306243280</a></p>
+    <p>حمزه یعقوبی: <a href="tel:+989175228395">+989175228395</a></p>
+    
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="burial-page" class="overlay hidden page">
+    <h1>کفن و دفن میت</h1>
+    <p>عقیل محمودی: <a href="tel:+989396639382">+989396639382</a></p>
+    
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="water-page" class="overlay hidden page">
+    <h1>مسئول آب</h1>
+    <p>حسن محمودی (عبدالرحمن): <a href="tel:+989171643078">+989171643078</a></p>
+    
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="council-page" class="overlay hidden page">
+    <h1>شورا</h1>
+    <p>محمود فربودی: <a href="tel:+989179620680">+989179620680</a></p>
+    <p>احمد محمدی: <a href="tel:+989171643401">+989171643401</a></p>
+    <p>طیب محمودی: <a href="tel:+989171643452">+989171643452</a></p>
+    
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="dehyari-page" class="overlay hidden page">
+    <h1>دهیاری</h1>
+    <p>دهیاری(ثابت): <a href="tel:+987644383527">+987644383527</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="dehyar-page" class="overlay hidden page">
+    <h1>دهیار</h1>
+    <p>ایوب حاجی محمدی(همراه اول): <a href="tel:+989171643037">+989171643037</a></p>
+    <p>ایوب حاجی محمدی(ایرانسل): <a href="tel:+989391643037">+989391643037</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="imam-page" class="overlay hidden page">
+    <h1>امام جمعه</h1>
+    <p>علی محمودی: <a href="tel:+989177623968">+989177623968</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="highschool_boys-page" class="overlay hidden page">
+    <h1>دبیرستان پسرانه</h1>
+    <p>دبیرستان پسرانه(ثابت): <a href="tel:+987644383514">+987644383514</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="highschool_girls-page" class="overlay hidden page">
+    <h1>راهنمایی دخترانه</h1>
+    <p>راهنمایی دخترانه(ثابت): <a href="tel:+987644383491">+987644383491</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="elementary-page" class="overlay hidden page">
+    <h1>دبستان جهاد</h1>
+    <p>دبستان جهاد(ثابت): <a href="tel:+987644383484">+987644383484</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="telecom-page" class="overlay hidden page">
+    <h1>مخابرات</h1>
+    <p>حسن محمودی(عبدالرحمن): <a href="tel:+989171643078">+989171643078</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="health-page" class="overlay hidden page">
+    <h1>شبکه بهداشت</h1>
+    <p>احمد محمدی: <a href="tel:+989171643401">+989171643401</a></p>
+    <p>خانه بهداشت(ثابت): <a href="tel:+987644383488">+987644383488</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="school-page" class="overlay hidden page">
+    <h1>مکتب خانه</h1>
+    <p>مکتب خانه(ثابت): <a href="tel:+987644383520">+987644383520</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+    <div id="painting-page" class="overlay hidden page">
+    <h1>رنگ و نقاشی</h1>
+    <p>مرتضی شجاع: <a href="tel:+989175269765">+989175269765</a></p>
+    <p>عبدالله محمودی: <a href="tel:+989397613051">+989397613051</a></p>
+    <p>مصطفی محمودی: <a href="tel:+989394233273">+989394233273</a></p>
+    <button onclick="showMainPage()">بازگشت</button>
+</div>
+
     <script>
-        Parse.initialize("4ZQKeZMaAL60CY63kgU8oO5S3emrVGNOuOvomBuC", "LVQBKZcp9TD5Z9kN1XTOPAZB5eNPZMEbgUJGp9RY");
-        Parse.serverURL = 'https://parseapi.back4app.com/';
+        function showPage(page) {
+            document.getElementById('main-page').classList.add('hidden');
+            document.getElementById(page + '-page').classList.remove('hidden');
+        }
 
-        function saveNote() {
-            var Note = Parse.Object.extend("Note");
-            var note = new Note();
-
-            var content = document.getElementById('noteContent').value;
-            note.set("content", content);
-
-            note.save(null, {
-                success: function(note) {
-                    alert('یادداشت با موفقیت ذخیره شد با شناسه: ' + note.id);
-                },
-                error: function(note, error) {
-                    alert('خطا در ذخیره یادداشت: ' + error.message);
-                }
-            });
+        function showMainPage() {
+            document.querySelectorAll('.page').forEach(page => (page.classList.add('hidden')));
+            document.getElementById('main-page').classList.remove('hidden');
         }
     </script>
 </body>
